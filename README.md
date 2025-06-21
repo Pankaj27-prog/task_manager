@@ -2,17 +2,44 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Environment Variables Setup
+
+This project uses environment variables for configuration. Follow these steps to set up your environment:
+
+1. Copy the example environment file:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Edit the `.env` file and add your configuration values:
+   ```
+   # MongoDB Connection
+   MONGODB_URI=your_mongodb_connection_string_here
+   
+   # Server Configuration
+   PORT=5000
+   
+   # Node Environment
+   NODE_ENV=development
+   ```
+
+3. Replace `your_mongodb_connection_string_here` with your actual MongoDB connection string.
+
+**Important:** The `.env` file is already added to `.gitignore` to prevent sensitive information from being committed to version control.
+
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the React app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm run server`
+
+Runs the Express backend server with nodemon for development.\
+The server will run on the port specified in your `.env` file (default: 5000).
 
 ### `npm test`
 
