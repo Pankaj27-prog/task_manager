@@ -13,7 +13,7 @@ function InputPage({ onNavigateToInitial }) {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/entries");
+      const res = await axios.get("/entries");
       setTodos(res.data.data);
     } catch (err) {
       console.error("Fetch failed", err);
@@ -27,7 +27,7 @@ function InputPage({ onNavigateToInitial }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/submit", {
+      await axios.post("/submit", {
         task,
         description,
       });
@@ -42,7 +42,7 @@ function InputPage({ onNavigateToInitial }) {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/entries/${id}`);
+      await axios.delete(`/entries/${id}`);
       fetchData();
     } catch (err) {
       alert("Delete failed");
@@ -57,7 +57,7 @@ function InputPage({ onNavigateToInitial }) {
 
   const submitEdit = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/entries/${id}`, {
+      await axios.put(`/entries/${id}`, {
         task: editTask,
         description: editDescription,
       });
@@ -70,7 +70,7 @@ function InputPage({ onNavigateToInitial }) {
 
   const toggleComplete = async (todo) => {
     try {
-      await axios.put(`http://localhost:5000/entries/${todo._id}`, {
+      await axios.put(`/entries/${todo._id}`, {
         task: todo.task,
         description: todo.description,
         completed: !todo.completed,
